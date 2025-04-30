@@ -30,19 +30,19 @@ const About = () => {
 
                 <div>
                     <h3 className="text-2xl font-semibold text-secondary mb-4 font-playfair">
-                        Nana Ama Mensah
+                        Miss Comfort Awuah
                     </h3>
                     <p className="text-sm text-primary mb-2 font-medium">Founder & CEO</p>
 
                     <div className="space-y-4 text-gray-700 font-poppins">
                         <p>
-                            With over 15 years in the beauty industry, Nana Ama transformed her childhood passion for
+                            With over 15 years in the beauty industry, Miss Comfort transformed her childhood passion for
                             aesthetics into Ghana's premier luxury beauty destination. What began as a small studio in
                             Accra has blossomed into Flawless Beauty Salon - a sanctuary where artistry and self-care
                             converge.
                         </p>
                         <p>
-                            A certified master stylist trained in Paris, London, and New York, Nana Ama believes true
+                            A certified master stylist trained in Paris, London, and New York, Comfort believes true
                             beauty enhances one's natural features rather than masking them. This philosophy permeates
                             every service at Flawless Beauty.
                         </p>
