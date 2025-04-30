@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DatePicker from 'react-datepicker';
@@ -109,6 +108,7 @@ const BookingForm = () => {
     const [showWhatsappOption, setShowWhatsappOption] = useState(false);
     const [sendingWhatsapp, setSendingWhatsapp] = useState(false);
     const [whatsappSent, setWhatsappSent] = useState(false);
+    const [readyToSubmit, setReadyToSubmit] = useState(false); // New state to track if user has confirmed booking
 
     // Time slots (8am-6pm, every 30 minutes)
     const allTimeSlots = [];
@@ -264,9 +264,20 @@ const BookingForm = () => {
         }
     };
 
+    // Mark booking as ready to submit
+    const confirmBooking = () => {
+        setReadyToSubmit(true);
+    };
+
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // If not confirmed yet, don't proceed with submission
+        if (!readyToSubmit) {
+            return;
+        }
+
         setIsSubmitting(true);
 
         try {
@@ -359,11 +370,19 @@ const BookingForm = () => {
 
         // Proceed to next step if validation passes
         setCurrentStep(currentStep + 1);
+
+        // Reset readyToSubmit when moving to the review step
+        if (currentStep === 3) {
+            setReadyToSubmit(false);
+        }
     };
 
     // Previous step handler
     const goToPreviousStep = () => {
         setCurrentStep(currentStep - 1);
+        if (currentStep === 4) {
+            setReadyToSubmit(false);
+        }
     };
 
     // Check if current step is valid
@@ -407,6 +426,7 @@ const BookingForm = () => {
         });
         setShowWhatsappOption(false);
         setWhatsappSent(false);
+        setReadyToSubmit(false);
     };
 
     // Animation variants
@@ -554,7 +574,7 @@ const BookingForm = () => {
                                             <div className="text-xs text-white mt-1 font-medium">
                                                 {step === 1 ? 'Personal' :
                                                     step === 2 ? 'Service' :
-                                                        step === 3 ? 'Schedule' : 'Notes'}
+                                                        step === 3 ? 'Schedule' : 'Review'}
                                             </div>
                                         </div>
                                     ))}
@@ -719,6 +739,7 @@ const BookingForm = () => {
                                                 )}
                                             </motion.div>
 
+
                                             {formData.mainService && formData.subService && (
                                                 <motion.div
                                                     initial={{ opacity: 0, height: 0 }}
@@ -736,6 +757,7 @@ const BookingForm = () => {
                                                     </div>
                                                 </motion.div>
                                             )}
+
                                         </motion.div>
                                     )}
 
@@ -748,48 +770,52 @@ const BookingForm = () => {
                                             variants={containerVariants}
                                             className="space-y-6"
                                         >
-                                            <motion.div variants={itemVariants} className="mb-4">
-                                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                                    Date <span className="text-red-500">*</span>
+                                            <motion.div variants={itemVariants}>
+                                                <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+                                                    Appointment Date <span className="text-red-500">*</span>
                                                 </label>
-                                                <div className="relative mb-4">
+                                                <div className="relative">
                                                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                                        <FaCalendarAlt className="text-gray-400 h-5 w-5" />
+                                                        <FaCalendarAlt className="h-5 w-5 text-gray-400" />
                                                     </div>
                                                     <DatePicker
                                                         selected={formData.date}
                                                         onChange={handleDateChange}
-                                                        minDate={new Date()}
                                                         filterDate={isWeekday}
+                                                        minDate={new Date()}
                                                         placeholderText="Select a date"
-                                                        dateFormat="MMMM d, yyyy"
                                                         className={`pl-10 block w-full rounded-lg shadow-sm focus:border-primary focus:ring-primary py-3 px-4 border ${errors.date ? 'border-red-500' : 'border-gray-300'}`}
+                                                        wrapperClassName="w-full"
                                                     />
                                                 </div>
-                                                {errors.date && (
+                                                {errors.date ? (
                                                     <p className="mt-1 text-sm text-red-500">{errors.date}</p>
+                                                ) : (
+                                                    <p className="mt-1 text-xs text-gray-500">
+                                                        We are closed on Sundays
+                                                    </p>
                                                 )}
                                             </motion.div>
 
                                             <motion.div variants={itemVariants}>
-                                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                                    Time <span className="text-red-500">*</span>
+                                                <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-1">
+                                                    Appointment Time <span className="text-red-500">*</span>
                                                 </label>
                                                 <div className="relative">
                                                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                                        <FaClock className="text-gray-400 h-5 w-5" />
+                                                        <FaClock className="h-5 w-5 text-gray-400" />
                                                     </div>
                                                     <select
+                                                        id="time"
+                                                        required
+                                                        disabled={!formData.date}
                                                         className={`pl-10 block w-full rounded-lg shadow-sm focus:border-primary focus:ring-primary py-3 px-4 border appearance-none ${errors.time ? 'border-red-500' : 'border-gray-300'}`}
                                                         value={formData.time}
                                                         onChange={(e) => handleInputChange('time', e.target.value)}
-                                                        disabled={!formData.date}
                                                     >
                                                         <option value="">{formData.date ? 'Select a time' : 'Select a date first'}</option>
                                                         {availableTimes.map((time) => (
-                                                            <option key={time} value={time}>
-                                                                {time}
-                                                            </option>
+                                                            <option key={time} value={time}>{time}</option>
                                                         ))}
                                                     </select>
                                                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -820,6 +846,8 @@ const BookingForm = () => {
                                                     </div>
                                                 </motion.div>
                                             )}
+
+
                                         </motion.div>
                                     )}
 
@@ -832,6 +860,33 @@ const BookingForm = () => {
                                             variants={containerVariants}
                                             className="space-y-6"
                                         >
+                                            {/* Summary of booking */}
+                                            <motion.div variants={itemVariants} className="p-4 bg-gray-50 rounded-lg">
+                                                <h3 className="font-semibold text-gray-800 mb-3">Your Booking Summary</h3>
+                                                <div className="grid grid-cols-2 gap-y-2 text-sm">
+                                                    <div className="text-gray-600">Name:</div>
+                                                    <div className="font-medium">{formData.name}</div>
+
+                                                    <div className="text-gray-600">Phone:</div>
+                                                    <div className="font-medium">{formData.phone}</div>
+
+                                                    <div className="text-gray-600">Email:</div>
+                                                    <div className="font-medium">{formData.email}</div>
+
+                                                    <div className="text-gray-600">Service:</div>
+                                                    <div className="font-medium">{formData.subService}</div>
+
+                                                    <div className="text-gray-600">Date:</div>
+                                                    <div className="font-medium">
+                                                        {formData.date?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                                                    </div>
+
+                                                    <div className="text-gray-600">Time:</div>
+                                                    <div className="font-medium">{formData.time}</div>
+                                                </div>
+                                            </motion.div>
+
+                                            {/* Additional notes */}
                                             <motion.div variants={itemVariants}>
                                                 <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
                                                     Additional Notes <span className="text-gray-400">(optional)</span>
@@ -840,49 +895,26 @@ const BookingForm = () => {
                                                     id="notes"
                                                     rows={4}
                                                     className="block w-full rounded-lg shadow-sm focus:border-primary focus:ring-primary py-3 px-4 border border-gray-300"
-                                                    placeholder="Any special requests or additional information..."
                                                     value={formData.notes}
                                                     onChange={(e) => handleInputChange('notes', e.target.value)}
+                                                    placeholder="Any additional information or special requests..."
                                                 ></textarea>
                                             </motion.div>
 
-                                            <motion.div variants={itemVariants} className="space-y-4">
-                                                <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                                                    <h3 className="text-lg font-medium text-gray-900 mb-2">Booking Summary</h3>
-                                                    <div className="space-y-2 text-sm">
-                                                        <div className="flex justify-between">
-                                                            <span className="text-gray-500">Name:</span>
-                                                            <span className="font-medium">{formData.name}</span>
-                                                        </div>
-                                                        <div className="flex justify-between">
-                                                            <span className="text-gray-500">Service:</span>
-                                                            <span className="font-medium">{formData.subService}</span>
-                                                        </div>
-                                                        <div className="flex justify-between">
-                                                            <span className="text-gray-500">Date:</span>
-                                                            <span className="font-medium">
-                                                                {formData.date?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-                                                            </span>
-                                                        </div>
-                                                        <div className="flex justify-between">
-                                                            <span className="text-gray-500">Time:</span>
-                                                            <span className="font-medium">{formData.time}</span>
-                                                        </div>
-                                                        <div className="flex justify-between">
-                                                            <span className="text-gray-500">Contact:</span>
-                                                            <span className="font-medium">{formData.phone}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
-                                                    <div className="flex items-center">
-                                                        <FaInfoCircle className="text-yellow-500 mr-2" />
-                                                        <p className="text-sm text-gray-700">
-                                                            Please arrive 10 minutes before your scheduled time. Cancellations need at least 24 hours notice.
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                            {/* Confirmation button */}
+                                            <motion.div variants={itemVariants}>
+                                                <button
+                                                    type="button"
+                                                    onClick={confirmBooking}
+                                                    className={`w-full py-3 px-6 rounded-lg text-white font-medium ${readyToSubmit ? 'bg-green-500' : 'bg-primary'} hover:bg-opacity-90 transition-colors`}
+                                                >
+                                                    {readyToSubmit ? 'Confirmed! Click Submit Below' : 'Confirm Booking Details'}
+                                                </button>
+                                                {!readyToSubmit && (
+                                                    <p className="mt-2 text-xs text-center text-gray-500">
+                                                        Please review your booking details and confirm before submitting
+                                                    </p>
+                                                )}
                                             </motion.div>
                                         </motion.div>
                                     )}
@@ -893,30 +925,26 @@ const BookingForm = () => {
                                         <button
                                             type="button"
                                             onClick={goToPreviousStep}
-                                            className="flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                                            className="py-2 px-4 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
                                         >
-                                            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                                            </svg>
                                             Back
                                         </button>
                                     )}
-
                                     {currentStep < 4 ? (
                                         <button
                                             type="button"
                                             onClick={goToNextStep}
                                             disabled={!isStepValid()}
-                                            className={`ml-auto flex items-center justify-center px-6 py-3 ${isStepValid() ? 'bg-primary hover:bg-primary/90' : 'bg-gray-300'} text-white rounded-lg transition-colors`}
+                                            className={`ml-auto py-2 px-6 rounded-lg text-white font-medium ${isStepValid() ? 'bg-primary hover:bg-primary/80' : 'bg-gray-400 cursor-not-allowed'} transition-colors flex items-center`}
                                         >
-                                            Next Step
-                                            <FaAngleRight className="ml-2" />
+                                            Next
+                                            <FaAngleRight className="ml-1" />
                                         </button>
                                     ) : (
                                         <button
                                             type="submit"
-                                            disabled={isSubmitting}
-                                            className="ml-auto flex items-center justify-center px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors"
+                                            disabled={isSubmitting || !readyToSubmit}
+                                            className={`ml-auto py-2 px-6 rounded-lg text-white font-medium ${readyToSubmit ? 'bg-primary hover:bg-primary/80' : 'bg-gray-400 cursor-not-allowed'} transition-colors`}
                                         >
                                             {isSubmitting ? (
                                                 <span className="flex items-center">
@@ -927,10 +955,7 @@ const BookingForm = () => {
                                                     Processing...
                                                 </span>
                                             ) : (
-                                                <span className="flex items-center">
-                                                    Complete Booking
-                                                    <FaCheck className="ml-2" />
-                                                </span>
+                                                'Submit Booking'
                                             )}
                                         </button>
                                     )}

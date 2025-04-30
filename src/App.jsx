@@ -11,6 +11,7 @@ import BookingForm from "./Pages/BookingForm";
 import PedicureStyles from "./Pages/PedicureStyles";
 import MakeupStyles from "./Pages/MakeupStyles";
 import Contact from "./Pages/Contact";
+import About from "./Pages/About"
 import MainNav from "./Pages/MainNav";
 
 function AppLayout() {
@@ -33,6 +34,7 @@ function AppLayout() {
           <Route path="/makeup" element={<MakeupStyles />} />
           <Route path="/booking" element={<BookingForm />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
           <Route path="/footer" element={<Footer />} />
         </Routes>
       </main>

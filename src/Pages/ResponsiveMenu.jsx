@@ -14,6 +14,8 @@ import {
     FaChevronDown,
     FaChevronUp,
 } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+
 
 const ResponsiveMenu = ({ showMenu, toggleMenu }) => {
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -46,13 +48,18 @@ const ResponsiveMenu = ({ showMenu, toggleMenu }) => {
             path: "/contact",
         },
         {
+            name: "About Us",
+            icon: <AiOutlineInfoCircle />,
+            path: "/about",
+        },
+        {
             name: "Products",
             icon: <FaHandSparkles />,
             dropdown: [
-                { name: "Hair Care", path: "/products/hair-care" },
-                { name: "Nail Care", path: "/products/nail-care" },
-                { name: "Skin Care", path: "/products/skin-care" },
-                { name: "Makeup", path: "/products/makeup" },
+                { name: "Hair Care", path: "/" },
+                { name: "Nail Care", path: "/" },
+                { name: "Skin Care", path: "/" },
+                { name: "Makeup", path: "/" },
             ],
         },
         {
@@ -193,3 +200,4 @@ ResponsiveMenu.propTypes = {
 };
 
 export default ResponsiveMenu;
+
