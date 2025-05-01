@@ -86,16 +86,10 @@ const LashesStyles = ({ isHomePreview = false }) => {
                                 <p className="text-gray-600 text-sm mb-4 pl-9">{style.description}</p>
                                 <div className="flex justify-between items-center pl-9">
                                     <span className="text-primary text-sm font-medium">{style.duration}</span>
-                                    <a
-                                        href="/booking"
+                                    <Link
+                                        to="/booking"
                                         className="flex items-center text-primary bg-secondary bg-opacity-10 rounded-full px-4 py-2 hover:bg-opacity-100 hover:text-white font-medium transition-all duration-300 group"
-                                        onClick={(e) => {
-                                            if (isHomePreview) {
-                                                e.preventDefault();
-                                                window.location.href = "/booking";
-                                                window.scrollTo(0, 0);
-                                            }
-                                        }}
+                                        onClick={() => window.scrollTo(0, 0)}
                                     >
                                         <span>Book</span>
                                         <svg
@@ -107,7 +101,7 @@ const LashesStyles = ({ isHomePreview = false }) => {
                                         >
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                         </svg>
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -143,8 +137,8 @@ const LashesStyles = ({ isHomePreview = false }) => {
                     <div className="bg-gradient-to-r from-purple-50 to-secondary/10 rounded-xl p-8 text-center">
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">Custom Lash Consultations</h3>
                         <p className="text-gray-600 mb-4">Want something personalized? Book a consultation with our lash artists to create your perfect look!</p>
-                        <a
-                            href="/booking"
+                        <Link
+                            to="/booking"
                             className="inline-flex items-center text-primary font-medium transition-colors duration-300 group"
                             onClick={() => window.scrollTo(0, 0)}
                         >
@@ -158,7 +152,7 @@ const LashesStyles = ({ isHomePreview = false }) => {
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             )}
