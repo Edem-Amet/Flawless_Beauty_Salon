@@ -378,7 +378,7 @@ const Navbar = () => {
                     <div className="flex gap-3 sm:gap-4 md:gap-6  mt-[-70px]">
                         <motion.a
                             whileHover={{ scale: 1.2, y: -5 }}
-                            href="https://facebook.com/flawlessbeautysalon"
+                            href="https://facebook.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white text-base sm:text-lg md:text-xl bg-black/20 p-1.5 sm:p-2 rounded-full backdrop-blur-sm"
@@ -388,7 +388,7 @@ const Navbar = () => {
                         </motion.a>
                         <motion.a
                             whileHover={{ scale: 1.2, y: -5 }}
-                            href="https://instagram.com/flawlessbeautysalon"
+                            href="https://www.instagram.com/flawless_beautysaloon/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white text-base sm:text-lg md:text-xl bg-black/20 p-1.5 sm:p-2 rounded-full backdrop-blur-sm"
@@ -398,7 +398,7 @@ const Navbar = () => {
                         </motion.a>
                         <motion.a
                             whileHover={{ scale: 1.2, y: -5 }}
-                            href="https://twitter.com/flawlessbeauty"
+                            href="https://twitter.com/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-white text-base sm:text-lg md:text-xl bg-black/20 p-1.5 sm:p-2 rounded-full backdrop-blur-sm"
