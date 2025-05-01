@@ -14,6 +14,7 @@ import {
     FaChevronDown,
     FaArrowRight,
 } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
 import logo from "../assets/main_logo.png";
@@ -81,6 +82,11 @@ const Navbar = () => {
                 { name: "Skin Care", path: "/products/skin-care" },
                 { name: "Makeup", path: "/products/makeup" },
             ],
+        },
+        {
+            name: "About Us",
+            icon: <AiOutlineInfoCircle />,
+            path: "/about",
         },
     ];
 
