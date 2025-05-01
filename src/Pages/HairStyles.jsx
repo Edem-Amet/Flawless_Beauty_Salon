@@ -132,7 +132,7 @@ const HairStyles = ({ isHomePreview = false }) => {
                     onClick={(e) => {
                       if (isHomePreview) {
                         e.preventDefault();
-                        window.location.to = "/booking";
+                        window.location.href = "/booking";
                         window.scrollTo(0, 0);
                       }
                     }}
@@ -183,6 +183,7 @@ const HairStyles = ({ isHomePreview = false }) => {
           <div className="bg-gradient-to-r from-purple-50 to-secondary/10 rounded-xl p-8 text-center">
             <h3 className="text-2xl font-bold text-gray-800 mb-2">Custom Hair Consultations</h3>
             <p className="text-gray-600 mb-4">Want something personalized? Book a consultation with our stylists to create your perfect look!</p>
+
             <Link
               to="/booking"
               className="inline-flex items-center text-primary font-medium transition-colors duration-300 group"
@@ -199,6 +200,7 @@ const HairStyles = ({ isHomePreview = false }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </Link>
+
           </div>
         </div>
       )}
