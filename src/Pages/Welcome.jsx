@@ -8,7 +8,7 @@ import hairImage from "../assets/bg6.jpg";
 import nailsImage from "../assets/Nails1.jpg";
 import pedicureImage from "../assets/ped3.jpg";
 import frontalImage from "../assets/frontal1.jpg";
-import makeupImage from "../assets/bg5.jpg";
+import makeupImage from "../assets/makeup1.jpg";
 import lashesImage from "../assets/lash1.jpg";
 import salonVideo from "../assets/Video.mp4";
 
