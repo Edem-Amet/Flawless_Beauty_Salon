@@ -132,7 +132,7 @@ const HairStyles = ({ isHomePreview = false }) => {
                     onClick={(e) => {
                       if (isHomePreview) {
                         e.preventDefault();
-                        window.location.href = "/booking";
+                        window.location.to = "/booking";
                         window.scrollTo(0, 0);
                       }
                     }}
