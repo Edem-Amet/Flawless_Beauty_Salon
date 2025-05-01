@@ -90,13 +90,7 @@ const NailStyles = ({ isHomePreview = false }) => {
                                     <Link
                                         to="/booking"
                                         className="flex items-center text-primary bg-secondary bg-opacity-10 rounded-full px-4 py-2 hover:bg-opacity-100 hover:text-white font-medium transition-all duration-300 group"
-                                        onClick={(e) => {
-                                            if (isHomePreview) {
-                                                e.preventDefault();
-                                                window.location.href = "/booking";
-                                                window.scrollTo(0, 0);
-                                            }
-                                        }}
+                                        onClick={() => window.scrollTo(0, 0)}
                                     >
                                         <span>Book</span>
                                         <svg
