@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 // Centralized image imports
 import hairImage from "../assets/bg6.jpg";
@@ -119,12 +120,13 @@ const Welcome = () => {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 1.2, duration: 0.6 }}
                         >
-                            <a
-                                href="/booking"
-                                className="inline-flex items-center bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300"
+                            <Link
+                                to="/booking"
+                                className="inline-flex items-center bg-primary hover:bg-secondary text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-all duration-300"
                             >
                                 Book Your Session <FaArrowRight className="ml-3" />
-                            </a>
+                            </Link>
+
                         </motion.div>
                     </motion.div>
 
@@ -296,5 +298,6 @@ const Welcome = () => {
         </div>
     );
 };
+
 
 export default Welcome;

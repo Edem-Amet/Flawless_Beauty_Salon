@@ -69,6 +69,7 @@ const About = () => {
                 </div>
             </div>
 
+
             {/* Milestones Section */}
             <div className="max-w-7xl mx-auto mb-16">
                 <h3 className="text-2xl font-semibold text-center text-secondary mb-8 font-playfair">
