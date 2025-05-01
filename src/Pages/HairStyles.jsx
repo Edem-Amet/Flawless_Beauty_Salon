@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   FaCut,
   FaBraille,
@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fa';
 
 const HairStyles = ({ isHomePreview = false }) => {
+  const navigate = useNavigate();
   // Hair styles data with icons
   const hairStyles = [
     {
@@ -126,13 +127,15 @@ const HairStyles = ({ isHomePreview = false }) => {
                 <p className="text-gray-600 text-sm mb-4 pl-9">{style.description}</p>
                 <div className="flex justify-between items-center pl-9">
                   <span className="text-primary text-sm font-medium">{style.duration}</span>
+
+
                   <Link
                     to="/booking"
                     className="flex items-center text-primary bg-secondary bg-opacity-10 rounded-full px-4 py-2 hover:bg-opacity-100 hover:text-white font-medium transition-all duration-300 group"
                     onClick={(e) => {
                       if (isHomePreview) {
                         e.preventDefault();
-                        window.location.href = "/booking";
+                        navigate('/booking');
                         window.scrollTo(0, 0);
                       }
                     }}
@@ -148,6 +151,8 @@ const HairStyles = ({ isHomePreview = false }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </Link>
+
+
                 </div>
               </div>
             </div>
