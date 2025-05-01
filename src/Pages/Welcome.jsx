@@ -218,7 +218,7 @@ const Welcome = () => {
                                     className="relative w-full h-72 shadow-xl rounded-xl overflow-hidden group"
                                 >
 
-                                    <Link href={`/${service.id}#top`} className="block w-full h-full">
+                                    <Link to={`/${service.id}#top`} className="block w-full h-full">
                                         <img
                                             src={service.img}
                                             alt={service.title}
@@ -247,7 +247,7 @@ const Welcome = () => {
                                     viewport={{ once: true }}
                                     className="relative h-60 shadow-xl rounded-xl overflow-hidden group"
                                 >
-                                    <Link href={`/${service.id}#top`} className="block w-full h-full">
+                                    <Link to={`/${service.id}#top`} className="block w-full h-full">
                                         <img
                                             src={service.img}
                                             alt={service.title}
@@ -281,7 +281,7 @@ const Welcome = () => {
                                             : "polygon(0 10%, 100% 0, 100% 100%, 0 90%)"
                                     }}
                                 >
-                                    <Link href={`/${service.id}#top`} className="block w-full h-full">
+                                    <Link to={`/${service.id}#top`} className="block w-full h-full">
                                         <img
                                             src={service.img}
                                             alt={service.title}
