@@ -168,7 +168,7 @@ const HairStyles = ({ isHomePreview = false }) => {
             className="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors duration-300 group"
             onClick={() => window.scrollTo(0, 0)}
           >
-            <span>Explore All Hair Services</span>
+            <span>Explore All Braiding Services</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
