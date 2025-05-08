@@ -73,17 +73,6 @@ const Navbar = () => {
             path: "/contact",
         },
         {
-            name: "Products",
-            icon: <FaHandSparkles />,
-            path: "/products",
-            dropdown: [
-                { name: "Hair Care", path: "/products/hair-care" },
-                { name: "Nail Care", path: "/products/nail-care" },
-                { name: "Skin Care", path: "/products/skin-care" },
-                { name: "Makeup", path: "/products/makeup" },
-            ],
-        },
-        {
             name: "About Us",
             icon: <AiOutlineInfoCircle />,
             path: "/about",
@@ -235,7 +224,7 @@ const Navbar = () => {
             <ResponsiveMenu showMenu={showMenu} toggleMenu={toggleMenu} />
 
             {/* Hero Section - Modified height for different devices */}
-            <div className="relative w-full overflow-hidden h-[80vh]  sm:h-auto md:h-screen lg:h-[80vh] xl:h-[80vh]">
+            <div className="relative w-full overflow-hidden h-[80vh]  sm:h-auto md:h-screen lg:h-[80vh] xl:h-[90vh]">
                 {/* Background Image with Overlay - Responsive */}
                 <div className="absolute inset-0 z-0">
                     <picture>
@@ -248,7 +237,7 @@ const Navbar = () => {
                             className="w-full h-full object-cover object-center md:object-center lg:object-center"
                             loading="eager"
                             style={{
-                                maxHeight: "80vh", // Prevent excessive enlargement on large screens
+                                maxHeight: "90vh", // Prevent excessive enlargement on large screens
                                 objectFit: "cover"
                             }}
                         />
@@ -265,9 +254,9 @@ const Navbar = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="max-w-lg sm:max-w-xl md:max-w-2xl mx-auto md:mx-0"
                         >
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-parisienne bg-black/30 py-3 px-3 rounded-2xl text-center md:text-left">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-poppins bg-black/30 py-3 px-3 rounded-2xl text-center md:text-left">
                                 <span className="bg-gradient-to-r from-white to-white bg-clip-text text-transparent">
-                                    Discover Your Beauty Potential
+                                    Welcome to Flawless Beauty Salon
                                 </span>
                             </h1>
                             <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 font-poppins text-white/80 text-center md:text-left">

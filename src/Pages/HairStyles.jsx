@@ -21,35 +21,35 @@ const HairStyles = ({ isHomePreview = false }) => {
       id: 1,
       name: "Knotless Braids",
       description: "Natural-looking braids with no knots at the root for less tension and pain.",
-      duration: "4-6 hours",
+      duration: "2-3 hours",
       icon: <FaBraille className="text-brown-500 text-2xl" />
     },
     {
       id: 2,
       name: "Boho Marley Twist",
       description: "Bohemian-inspired twists with curly ends for a free-spirited look.",
-      duration: "3-5 hours",
+      duration: "1-3 hours",
       icon: <FaLeaf className="text-green-400 text-2xl" />
     },
     {
       id: 3,
       name: "Boho Twist",
       description: "Elegant twisted style with bohemian flair and decorative accessories.",
-      duration: "3-4 hours",
+      duration: "2-3 hours",
       icon: <FaSpinner className="text-purple-500 text-2xl" />
     },
     {
       id: 4,
       name: "Spiral Braids",
       description: "Distinctive spiral pattern creating a beautiful dimensional look.",
-      duration: "4-6 hours",
+      duration: "2-3 hours",
       icon: <FaSnowflake className="text-blue-400 text-2xl" />
     },
     {
       id: 5,
       name: "Fulani Braids",
       description: "Traditional style with geometric patterns and decorative beads.",
-      duration: "5-7 hours",
+      duration: "2-3 hours",
       icon: <FaGem className="text-yellow-500 text-2xl" />
     },
     {
@@ -63,28 +63,28 @@ const HairStyles = ({ isHomePreview = false }) => {
       id: 7,
       name: "Soft Locs",
       description: "Lightweight and natural-looking locs with a softer texture.",
-      duration: "4-6 hours",
+      duration: "2-3 hours",
       icon: <FaWater className="text-teal-400 text-2xl" />
     },
     {
       id: 8,
       name: "All Curls",
       description: "Various curly styles tailored to enhance your natural texture.",
-      duration: "2-4 hours",
+      duration: "1-3 hours",
       icon: <FaStar className="text-orange-400 text-2xl" />
     },
     {
       id: 9,
       name: "Sasha Locs",
       description: "Modern take on traditional locs with a stylish, neat finish.",
-      duration: "5-7 hours",
+      duration: "1.30-3 hours",
       icon: <FaMoon className="text-indigo-400 text-2xl" />
     },
     {
       id: 10,
       name: "Loose Knotless",
       description: "Relaxed knotless style with a natural, flowing appearance.",
-      duration: "3-5 hours",
+      duration: "2-3 hours",
       icon: <FaCut className="text-red-400 text-2xl" />
     }
   ];
@@ -95,12 +95,12 @@ const HairStyles = ({ isHomePreview = false }) => {
   return (
     <div className={`bg-white ${isHomePreview ? 'py-12' : 'py-24'} px-4 sm:px-6 lg:px-8`}>
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto text-center mb-12">
+      <div className="max-w-7xl mx-auto text-center mb-12 mt-6">
         <h2 className="text-3xl sm:text-4xl font-parisienne text-primary mb-2">
-          Our Signature Styles
+          Hair Artistry Collection
         </h2>
         <h1 className="text-xl lg:text-4xl md:text-3xl font-bold font-playfair text-secondary mb-4">
-          Hair Artistry Collection
+          Braiding
         </h1>
         <p className="max-w-2xl mx-auto text-gray-700 font-poppins leading-relaxed">
           {isHomePreview

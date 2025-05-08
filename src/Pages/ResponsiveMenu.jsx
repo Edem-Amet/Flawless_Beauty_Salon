@@ -53,16 +53,6 @@ const ResponsiveMenu = ({ showMenu, toggleMenu }) => {
             path: "/about",
         },
         {
-            name: "Products",
-            icon: <FaHandSparkles />,
-            dropdown: [
-                { name: "Hair Care", path: "/" },
-                { name: "Nail Care", path: "/" },
-                { name: "Skin Care", path: "/" },
-                { name: "Makeup", path: "/" },
-            ],
-        },
-        {
             name: "Book Now",
             icon: <FaCalendarAlt />,
             path: "/booking",
