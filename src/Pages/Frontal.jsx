@@ -15,7 +15,7 @@ const FrontalInstallation = ({ isHomePreview = false }) => {
             id: 1,
             name: "Lace Frontal Installation",
             description: "Seamless hairline with a sheer lace base that blends perfectly with your skin tone for a natural look.",
-            duration: "3-4 hours",
+            duration: "1-2 hours",
             icon: <FaUserCircle className="text-brown-400 text-2xl" />,
             features: ["Undetectable hairline", "Customizable density", "Natural parting space"]
         },
@@ -23,7 +23,7 @@ const FrontalInstallation = ({ isHomePreview = false }) => {
             id: 2,
             name: "360 Frontal Installation",
             description: "Full perimeter coverage that allows for versatile styling including high ponytails and updos.",
-            duration: "4-5 hours",
+            duration: "1.30-2.30 hours",
             icon: <FaCrown className="text-gold-500 text-2xl" />,
             features: ["Full edge coverage", "Multiple styling options", "Secure bonding"]
         },
@@ -32,7 +32,7 @@ const FrontalInstallation = ({ isHomePreview = false }) => {
             id: 3,
             name: "Custom Frontal Design",
             description: "Personalized frontal installation tailored to your unique facial features and style preferences.",
-            duration: "5-6 hours",
+            duration: "2-3 hours",
             icon: <FaMagic className="text-purple-500 text-2xl" />,
             features: ["Custom hairline design", "Bleached knots", "Hand-tied knots"]
         }
@@ -137,14 +137,14 @@ const FrontalInstallation = ({ isHomePreview = false }) => {
             {!isHomePreview && (
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
                     <div className="bg-gradient-to-r from-brown-50 to-secondary/10 rounded-xl p-8 text-center">
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Premium Installation Consultation</h3>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Installation Consultation</h3>
                         <p className="text-gray-600 mb-4">Our stylists will assess your hair type and facial features to recommend the perfect frontal solution!</p>
                         <Link
                             to="/booking"
                             className="inline-flex items-center text-primary font-medium transition-colors duration-300 group"
                             onClick={() => window.scrollTo(0, 0)}
                         >
-                            <span>Book a Private Consultation</span>
+                            <span>Book a Service</span>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform duration-300"
