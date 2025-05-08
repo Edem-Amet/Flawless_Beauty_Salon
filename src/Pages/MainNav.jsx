@@ -66,17 +66,6 @@ const MainNav = () => {
             path: "/contact",
         },
         {
-            name: "Products",
-            icon: <FaHandSparkles />,
-            path: "/products",
-            dropdown: [
-                { name: "Hair Care", path: "/products/hair-care" },
-                { name: "Nail Care", path: "/products/nail-care" },
-                { name: "Skin Care", path: "/products/skin-care" },
-                { name: "Makeup", path: "/products/makeup" },
-            ],
-        },
-        {
             name: "About Us",
             icon: <AiOutlineInfoCircle />,
             path: "/about",

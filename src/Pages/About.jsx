@@ -2,7 +2,7 @@ import { FaInstagram, FaFacebook, FaLinkedin, FaQuoteLeft } from "react-icons/fa
 
 const About = () => {
     return (
-        <div className="min-h-screen pt-[80px] px-4 md:px-10 pb-16 bg-gray-50">
+        <div className="min-h-screen pt-[80px] px-4 md:px-10 pb-16 bg-gray-50 mt-10">
             {/* Hero Section */}
             <div className="max-w-7xl mx-auto text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl font-parisienne text-primary mb-2">
